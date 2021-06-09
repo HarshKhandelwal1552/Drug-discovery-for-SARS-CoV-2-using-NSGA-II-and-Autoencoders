@@ -89,6 +89,7 @@ def get_all_metrics(gen, k=None, n_jobs=1,
             pool = 1
     metrics['valid'] = fraction_valid(gen, n_jobs=pool)
     gen = remove_invalid(gen, canonize=True)
+    print(len(gen))
     if not isinstance(k, (list, tuple)):
         k = [k]
     for _k in k:
@@ -217,9 +218,11 @@ def fraction_unique(gen, k=None, n_jobs=1, check_validity=True):
                 "gen contains only {} molecules".format(len(gen))
             )
         gen = gen[:k]
+    print(len(gen))
     canonic = set(mapper(n_jobs)(canonic_smiles, gen))
     if None in canonic and check_validity:
         raise ValueError("Invalid molecule passed to unique@k")
+    print(len(gen))
     return len(canonic) / len(gen)
 
 
