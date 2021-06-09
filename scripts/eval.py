@@ -30,6 +30,7 @@ def main(config, print_metrics=True):
             config.ptest_scaffolds_path,
             allow_pickle=True)['stats'].item()
     gen = read_smiles_csv(config.gen_path)
+    print(config.gen_path, len(gen))
     metrics = get_all_metrics(gen=gen, k=config.ks, n_jobs=config.n_jobs,
                               device=config.device,
                               test_scaffolds=test_scaffolds,
