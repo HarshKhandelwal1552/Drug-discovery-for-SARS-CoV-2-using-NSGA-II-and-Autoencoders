@@ -214,7 +214,7 @@ class AAETrainer(MosesTrainer):
                 scheduler.step()
 
             tqdm_data = tqdm(train_loader,
-                             desc='Training (epoch #{})'.format(epoch))
+                             desc='Training (epoch #{}/{})'.format(epoch,self.config.train_epochs))
             postfix = self._train_epoch(model,
                                         tqdm_data, criterions, optimizers)
             if logger is not None:
