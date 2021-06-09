@@ -71,7 +71,7 @@ class AAETrainer(MosesTrainer):
         model.zero_grad()
         for epoch in range(self.config.pretrain_epochs):
             tqdm_data = tqdm(train_loader,
-                             desc='Pretraining (epoch #{})'.format(epoch))
+                             desc='Pretraining (epoch #{}/{}/{})'.format(epoch, self.config.train_epochs, self.config.pretrain_epochs))
 
             postfix = self._pretrain_epoch(model, tqdm_data,
                                            criterion, optimizer)
