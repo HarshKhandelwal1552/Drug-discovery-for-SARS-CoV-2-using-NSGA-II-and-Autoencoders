@@ -35,7 +35,7 @@ class config():
         self.model= 'aae'
         self.checkpoint_dir='./checkpoints'
         self.n_samples= 30000
-        self.n_jobs= -1
+        self.n_jobs= 1
         self.device= 'cuda'
         self.metrics= 'metrics.csv'
         self.train_size= None
