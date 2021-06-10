@@ -93,7 +93,7 @@ def get_all_metrics(gen, k=None, n_jobs=1,
             pool = 1
     gen= [clean(x) for x in gen]
     
-    print(gen)
+
     print('\nDone\n')
     metrics['valid'] = fraction_valid(gen, n_jobs=pool)
     # print(gen)
