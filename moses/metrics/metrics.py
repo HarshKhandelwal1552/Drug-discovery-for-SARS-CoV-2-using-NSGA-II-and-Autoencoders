@@ -88,7 +88,7 @@ def get_all_metrics(gen, k=None, n_jobs=1,
         else:
             pool = 1
     metrics['valid'] = fraction_valid(gen, n_jobs=pool)
-    print(gen.head())
+    print(gen)
     gen = remove_invalid(gen, canonize=True)
 
     print(len(gen))
