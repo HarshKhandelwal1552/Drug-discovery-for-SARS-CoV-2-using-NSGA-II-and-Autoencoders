@@ -39,7 +39,7 @@ def main(config, print_metrics=True):
                               test=test, train=train)
 
     samples = pd.DataFrame(gen, columns=['SMILES'])
-    samples.to_csv(config.gen_save, index=False)
+    samples.to_csv(config.gen_path, index=False)
     if print_metrics:
         for name, value in metrics.items():
             print('{},{}'.format(name, value))
