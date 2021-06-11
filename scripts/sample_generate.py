@@ -184,33 +184,9 @@ def sample_from_model(config, model):
     sampler_script.main(model, sampler_config)
 
 
-def eval_metrics(config, model, test_path, test_scaffolds_path,
-                 ptest_path, ptest_scaffolds_path, train_path):
-    print('Computing metrics...')
-    eval_parser = eval_script.get_parser()
-    args = [
-        '--gen_path', get_generation_path(config, model),
-        '--n_jobs', str(config.n_jobs),
-        '--device', config.device,
-    ]
-    if test_path is not None:
-        args.extend(['--test_path', test_path])
-    if test_scaffolds_path is not None:
-        args.extend(['--test_scaffolds_path', test_scaffolds_path])
-    if ptest_path is not None:
-        args.extend(['--ptest_path', ptest_path])
-    if ptest_scaffolds_path is not None:
-        args.extend(['--ptest_scaffolds_path', ptest_scaffolds_path])
-    if train_path is not None:
-        args.extend(['--train_path', train_path])
 
-    eval_config = eval_parser.parse_args(args)
-    metrics = eval_script.main(eval_config, print_metrics=False)
-
-    return metrics
-
-def eval_metrics(config, model, test_path, test_scaffolds_path,
-                 ptest_path, ptest_scaffolds_path, train_path):
+def eval_metrics(config, model, test_path= None, test_scaffolds_path= None,
+                 ptest_path= None, ptest_scaffolds_path= None, train_path= None):
     print('Computing metrics...')
     eval_parser = eval_script.get_parser()
     args = [
