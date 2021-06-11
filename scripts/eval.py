@@ -1,6 +1,7 @@
 import argparse
 import numpy as np
 import rdkit
+import pandas as pd
 
 from moses.metrics.metrics import get_all_metrics
 from moses.script_utils import read_smiles_csv
@@ -36,10 +37,9 @@ def main(config, print_metrics=True):
                               test_scaffolds=test_scaffolds,
                               ptest=ptest, ptest_scaffolds=ptest_scaffolds,
                               test=test, train=train)
-    textfile = open(config.gen_path, "w")
-    for element in gen:
-        textfile.write(element + "\n")
-    textfile.close()
+
+    samples = pd.DataFrame(gen, columns=['SMILES'])
+    samples.to_csv(config.gen_save, index=False)
     if print_metrics:
         for name, value in metrics.items():
             print('{},{}'.format(name, value))
