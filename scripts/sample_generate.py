@@ -77,7 +77,7 @@ def get_vocab_path(config, model):
 def get_generation_path(config, model):
     return os.path.join(
         config.checkpoint_dir,
-        model + config.experiment_suff + '_generated.csv'
+        model + config.experiment_suff + '_generated11.csv'
     )
 
 # =============================================================================
