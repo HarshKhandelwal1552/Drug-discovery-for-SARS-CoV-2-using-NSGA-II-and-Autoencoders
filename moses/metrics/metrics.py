@@ -154,8 +154,10 @@ def get_all_metrics(gen, k=None, n_jobs=1,
     if close_pool:
         pool.close()
         pool.join()
-    with open("gen.smi", "w") as output:
-        output.write(str(gen))
+    textfile = open("gen.smi", "w")
+    for element in gen:
+        textfile.write(element + "\n")
+    textfile.close()
     return metrics
 
 

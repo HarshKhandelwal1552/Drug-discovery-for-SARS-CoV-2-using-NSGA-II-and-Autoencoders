@@ -209,6 +209,30 @@ def eval_metrics(config, model, test_path, test_scaffolds_path,
 
     return metrics
 
+def eval_metrics(config, model, test_path, test_scaffolds_path,
+                 ptest_path, ptest_scaffolds_path, train_path):
+    print('Computing metrics...')
+    eval_parser = eval_script.get_parser()
+    args = [
+        '--gen_path', get_generation_path(config, model),
+        '--n_jobs', str(config.n_jobs),
+        '--device', config.device,
+    ]
+    if test_path is not None:
+        args.extend(['--test_path', test_path])
+    if test_scaffolds_path is not None:
+        args.extend(['--test_scaffolds_path', test_scaffolds_path])
+    if ptest_path is not None:
+        args.extend(['--ptest_path', ptest_path])
+    if ptest_scaffolds_path is not None:
+        args.extend(['--ptest_scaffolds_path', ptest_scaffolds_path])
+    if train_path is not None:
+        args.extend(['--train_path', train_path])
+
+    eval_config = eval_parser.parse_args(args)
+    metrics = eval_script.main(eval_config, print_metrics=False)
+
+    return metrics
 
 def main(config):
     if not os.path.exists(config.checkpoint_dir):
@@ -226,6 +250,15 @@ def main(config):
     for model in models:
 
         sample_from_model(config, model)
+        model_metrics = eval_metrics(config, model)
+        table = pd.DataFrame([model_metrics]).T
+        if len(models) == 1:
+            metrics_path = ''.join(
+                os.path.splitext(config.metrics)[:-1])+f'_{model}.csv'
+        else:
+            metrics_path = config.metrics
+        table.to_csv(metrics_path, header=False)
+
 
 
 if __name__ == '__main__':
