@@ -154,11 +154,8 @@ def get_all_metrics(gen, k=None, n_jobs=1,
     if close_pool:
         pool.close()
         pool.join()
-    textfile = open("gen.smi", "w")
-    for element in gen:
-        textfile.write(element + "\n")
-    textfile.close()
-    return metrics
+
+    return metrics, gen
 
 
 def compute_intermediate_statistics(smiles, n_jobs=1, device='cpu',

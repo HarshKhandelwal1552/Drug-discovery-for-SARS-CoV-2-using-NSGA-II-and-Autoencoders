@@ -31,12 +31,15 @@ def main(config, print_metrics=True):
             allow_pickle=True)['stats'].item()
     gen = read_smiles_csv(config.gen_path)
     print(config.gen_path, len(gen))
-    metrics = get_all_metrics(gen=gen, k=config.ks, n_jobs=config.n_jobs,
+    metrics, gen = get_all_metrics(gen=gen, k=config.ks, n_jobs=config.n_jobs,
                               device=config.device,
                               test_scaffolds=test_scaffolds,
                               ptest=ptest, ptest_scaffolds=ptest_scaffolds,
                               test=test, train=train)
-
+    textfile = open(config.gen_path, "w")
+    for element in gen:
+        textfile.write(element + "\n")
+    textfile.close()
     if print_metrics:
         for name, value in metrics.items():
             print('{},{}'.format(name, value))
