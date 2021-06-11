@@ -256,7 +256,8 @@ def main(config):
               else [config.model])
     for model in models:
         train_model(config, model, train_path, test_path)
-        sample_from_model(config, model)
+        if config.n_samples:
+            sample_from_model(config, model)
 
     for model in models:
         model_metrics = eval_metrics(config, model,
