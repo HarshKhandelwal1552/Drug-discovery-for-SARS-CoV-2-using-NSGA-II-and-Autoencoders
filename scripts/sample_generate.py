@@ -32,6 +32,7 @@ class config():
         self.ptest_path=None
         self.ptest_scaffolds_path= None
         self.model= 'aae'
+        self.gen_i= 1
         self.checkpoint_dir='./checkpoints'
         self.n_samples= 30000
         self.n_jobs= 1
@@ -77,7 +78,7 @@ def get_vocab_path(config, model):
 def get_generation_path(config, model):
     return os.path.join(
         config.checkpoint_dir,
-        model + config.experiment_suff + '_generated11.csv'
+        model + config.experiment_suff + '_'+ str(config.gen_i)+ '.csv'
     )
 
 # =============================================================================
