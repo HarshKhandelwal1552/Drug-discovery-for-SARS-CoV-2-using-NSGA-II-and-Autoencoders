@@ -34,7 +34,7 @@ class config():
         self.model= 'aae'
         self.gen_i= 1
         self.checkpoint_dir='./checkpoints'
-        self.n_samples= 30000
+        self.n_samples= 3000
         self.n_jobs= 1
         self.device= 'cuda'
         self.metrics= 'metrics.csv'
@@ -237,13 +237,21 @@ def main(config):
 
 
 
-if __name__ == '__main__':
-# =============================================================================
-#     parser = get_parser()
-# =============================================================================
-# =============================================================================
-#     config = parser.parse_known_args()[0]
-# =============================================================================
-    cfg= config()
-    print(cfg.model)
-    main(cfg)
+class generator():
+    def __init__(self, gen_i):
+        cfg= config()
+        print(cfg.model)
+        cfg.gen_i= gen_i
+        main(cfg)
+
+
+# if __name__ == '__main__':
+# # =============================================================================
+# #     parser = get_parser()
+# # =============================================================================
+# # =============================================================================
+# #     config = parser.parse_known_args()[0]
+# # =============================================================================
+#     cfg= config()
+#     print(cfg.model)
+#     main(cfg)

@@ -34,7 +34,7 @@ class config():
         self.ptest_scaffolds_path= None
         self.model= 'aae'
         self.checkpoint_dir='./checkpoints'
-        self.n_samples= 30000
+        self.n_samples= 3000
         self.n_jobs= 1
         self.device= 'cuda'
         self.metrics= 'metrics.csv'

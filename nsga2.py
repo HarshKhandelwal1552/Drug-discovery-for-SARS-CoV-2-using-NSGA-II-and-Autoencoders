@@ -2,15 +2,14 @@
 import random
 from pop import Population
 from tqdm import tqdm
-
+from scripts.sample_generate import generator
 
 
 class NSGA2Utils:
 
     def __init__(self, problem,
-                 num_of_tour_particips=1, tournament_prob=0.9, crossover_param=2, mutation_param=5):
-
-        
+                 num_of_tour_particips=1, tournament_prob=0.9, crossover_param=2, mutation_param=5, model= 'aae'):
+        self.model= model
         self.problem = problem
         self.num_of_tour_particips = num_of_tour_particips
         self.tournament_prob = tournament_prob
@@ -76,15 +75,15 @@ class NSGA2Utils:
             return 1
         else:
             return -1
-
+    
     def create_children(self, population,  gen_i):
         children = []
-        
-        with open('checkpoints/'+ + gen_i'.smi') as f:
+        generator(gen_i)
+        with open('checkpoints/'+ self.model+ '_' +str(gen_i) +'.smi') as f:
             content = f.readlines()
         # you may also want to remove whitespace characters like `\n` at the end of each line
         smiles = [x.strip() for x in content] 
-        children= self.create_initial_population(smiles[3001:6001])
+        children= self.create_initial_population(smiles)
 # =============================================================================
 #         while len(children) < len(population):
 #             parent1 = self.__tournament(population)
