@@ -6,7 +6,7 @@ from evol import Evolution
 
 
 
-with open('datasets/dataset.smi') as f:
+with open('moses/dataset/data/dataset.smi') as f:
     content = f.readlines()
 # you may also want to remove whitespace characters like `\n` at the end of each line
 smiles = [x.strip() for x in content] 
