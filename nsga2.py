@@ -79,7 +79,7 @@ class NSGA2Utils:
     def create_children(self, population,  gen_i):
         children = []
         generator(gen_i)
-        with open('checkpoints/'+ self.model+ '_' +str(gen_i) +'.csv') as f:
+        with open('checkpoints/'+ self.model+ '_generated_' +str(gen_i) +'.csv') as f:
             content = f.readlines()
         # you may also want to remove whitespace characters like `\n` at the end of each line
         smiles = [x.strip() for x in content] 

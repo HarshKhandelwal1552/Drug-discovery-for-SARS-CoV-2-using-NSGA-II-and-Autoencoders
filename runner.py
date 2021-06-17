@@ -34,7 +34,7 @@ def f4(s):
 
 problem = Problem(num_of_variables=1,objectives=[f3, f1])
 evolution = Evolution(problem)
-new= evolution.evolve(fathers= smiles)
+evolution.evolve(fathers= smiles)
 
 
 
