@@ -36,7 +36,7 @@ class Evolution:
         for i in range(self.num_of_generations):
 
             print('Q....')
-            children = self.utils.create_children(self.population)
+            children = self.utils.create_children(self.population, i)
             
             print('P+Q.....')
             self.population.extend(children)
