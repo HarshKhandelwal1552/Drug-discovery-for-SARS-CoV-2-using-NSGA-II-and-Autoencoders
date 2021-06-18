@@ -19,9 +19,13 @@ class NSGA2Utils:
     def create_initial_population(self, l):
         population = Population()
         for x in tqdm(l):
-            individual = self.problem.generate_individual(x)
-            self.problem.calculate_objectives(individual)
-            population.append(individual)
+            try: 
+                individual = self.problem.generate_individual(x)
+                self.problem.calculate_objectives(individual)
+                population.append(individual)
+            except:
+                pass
+            
         return population
 
     def fast_nondominated_sort(self, population):
