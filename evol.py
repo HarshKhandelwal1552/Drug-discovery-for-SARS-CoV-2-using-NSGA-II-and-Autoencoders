@@ -73,5 +73,6 @@ class Evolution:
                 self.utils.calculate_crowding_distance(front)
             
             #[print(x.features) for x in self.population.fronts[0]]
-            samples = pd.DataFrame(self.population, columns=['SMILES'])
+            smiles= [x.features for x in self.population]
+            samples = pd.DataFrame(smiles, columns=['SMILES'])
             samples.to_csv('checkpoints/gen_'+str(i)+ '.csv', index=False)
