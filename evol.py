@@ -1,6 +1,7 @@
 
 from nsga2 import NSGA2Utils
 from pop import Population
+import pandas as pd
 import time
 class Evolution:
 
