@@ -179,7 +179,8 @@ def sample_from_model(config, model):
          '--config_load', config_path,
          '--vocab_load', vocab_path,
          '--gen_save', get_generation_path(config, model),
-         '--n_samples', str(config.n_samples)]
+         '--n_samples', str(config.n_samples),
+         '--pre_trained', False]
     )[0]
     sampler_script.main(model, sampler_config)
 
