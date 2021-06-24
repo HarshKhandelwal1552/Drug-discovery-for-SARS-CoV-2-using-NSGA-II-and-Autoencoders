@@ -21,18 +21,18 @@ def f1(s):
     return m.calculateScore(convert(s))
 
 def f2(s):
-    return m.NP_score(convert(s))
+    return -m.NP_score(convert(s))
 
 def f3(s):
-    return m.qed_score(convert(s))
+    return -m.qed_score(convert(s))
 
 def f4(s):
     if m.pains(convert(s)):
-        return 1
+        return -1
     else: return 0
 
 
-problem = Problem(num_of_variables=1,objectives=[f3, f1])
+problem = Problem(num_of_variables=1,objectives=[f1, f2, f3, f4])
 evolution = Evolution(problem)
 evolution.evolve(fathers= smiles)
 
