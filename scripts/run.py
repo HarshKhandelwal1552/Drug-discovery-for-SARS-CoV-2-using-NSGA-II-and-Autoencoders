@@ -249,7 +249,6 @@ def eval_metrics(config, model, test_path, test_scaffolds_path,
 def main():
     cfg= config()
     print(cfg.model)
-    main(cfg)
     if not os.path.exists(config.checkpoint_dir):
         os.mkdir(config.checkpoint_dir)
 
