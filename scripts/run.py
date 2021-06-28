@@ -185,6 +185,7 @@ def train_model(config, model, train_path, test_path):
     trainer_config = trainer_parser.parse_known_args(
          [model] + sys.argv[1:] + args
     )[0]
+    print(trainer_config.pre_trained)
     trainer_script.main(model, trainer_config)
 
 
