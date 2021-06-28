@@ -246,7 +246,10 @@ def eval_metrics(config, model, test_path, test_scaffolds_path,
     return metrics
 
 
-def main(config):
+def main():
+    cfg= config()
+    print(cfg.model)
+    main(cfg)
     if not os.path.exists(config.checkpoint_dir):
         os.mkdir(config.checkpoint_dir)
 
@@ -278,13 +281,13 @@ def main(config):
         table.to_csv(metrics_path, header=False)
 
 
-if __name__ == '__main__':
-# =============================================================================
-#     parser = get_parser()
-# =============================================================================
-# =============================================================================
-#     config = parser.parse_known_args()[0]
-# =============================================================================
-    cfg= config()
-    print(cfg.model)
-    main(cfg)
+# if __name__ == '__main__':
+# # =============================================================================
+# #     parser = get_parser()
+# # =============================================================================
+# # =============================================================================
+# #     config = parser.parse_known_args()[0]
+# # =============================================================================
+#     cfg= config()
+#     print(cfg.model)
+#     main(cfg)
