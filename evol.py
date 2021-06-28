@@ -1,5 +1,6 @@
 
 from nsga2 import NSGA2Utils
+from scripts.sample_generate import mml
 from pop import Population
 import pandas as pd
 import time
@@ -75,4 +76,6 @@ class Evolution:
             #[print(x.features) for x in self.population.fronts[0]]
             smiles= [x.features for x in self.population]
             samples = pd.DataFrame(smiles, columns=['SMILES'])
-            samples.to_csv('checkpoints/gen_'+str(i)+ '.csv', index=False)
+            mml(i+1)
+            base_path= 'moses/dataset/data/gen_'
+            samples.to_csv(base_path+str(i)+ '.csv', index=False)

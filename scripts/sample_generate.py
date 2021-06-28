@@ -32,7 +32,6 @@ class config():
         self.ptest_path=None
         self.ptest_scaffolds_path= None
         self.model= 'aae'
-        self.gen_i= 1
         self.checkpoint_dir='./checkpoints'
         self.n_samples= 3000
         self.n_jobs= 1
@@ -152,7 +151,46 @@ def get_generation_path(config, model):
 # =============================================================================
 #     return parser
 # =============================================================================
+def train_model(config)
+    models = (MODELS.get_model_names()
+              if config.model == 'all'
+              else [config.model])
+    for model in models:
+        train_model(config, model, config.train_path, config.test_path)
+        if config.n_samples:
+            sample_from_model(config, model)
+    print('Training...')
+    model_path = get_model_path(config, model)
+    config_path = get_config_path(config, model)
+    vocab_path = get_vocab_path(config, model)
+    log_path = get_log_path(config, model)
 
+    if os.path.exists(model_path) and \
+            os.path.exists(config_path) and \
+            os.path.exists(vocab_path):
+        return
+
+    trainer_parser = trainer_script.get_parser()
+    args = [
+        '--device', config.device,
+        '--model_save', model_path,
+        '--config_save', config_path,
+        '--vocab_save', vocab_path,
+        '--log_file', log_path,
+        '--n_jobs', str(config.n_jobs),
+    ]
+    if train_path is not None:
+        args.extend(['--train_load', train_path])
+    if test_path is not None:
+        args.extend(['--val_load', test_path])
+    # if config.pre_trained is not None:
+    #     args.extend(['--pre_trained', str(1)])
+    trainer_config = trainer_parser.parse_known_args(
+         [model] + sys.argv[1:] + args
+    )[0]
+    trainer_config.pre_trained= True
+    trainer_config.gen_i= config.gen_i
+    trainer_script.main(model, trainer_config)
 
 
 def sample_from_model(config, model):
@@ -214,7 +252,6 @@ def eval_metrics(config, model, test_path= None, test_scaffolds_path= None,
 def main(config):
     if not os.path.exists(config.checkpoint_dir):
         os.mkdir(config.checkpoint_dir)
-
     train_path = config.train_path
     test_path = config.test_path
     test_scaffolds_path = config.test_scaffolds_path
@@ -245,7 +282,12 @@ class generator():
         cfg.gen_i= gen_i
         main(cfg)
 
-
+class mml():
+    def __init__(self, gen_i):
+        cfg= config()
+        print(cfg.model)
+        cfg.gen_i= gen_i
+        train_model(cfg)
 # if __name__ == '__main__':
 # # =============================================================================
 # #     parser = get_parser()
