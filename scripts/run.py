@@ -175,17 +175,16 @@ def train_model(config, model, train_path, test_path):
         '--vocab_save', vocab_path,
         '--log_file', log_path,
         '--n_jobs', str(config.n_jobs),
-        '--pre_trained', str(config.pre_trained)
     ]
     if train_path is not None:
         args.extend(['--train_load', train_path])
     if test_path is not None:
         args.extend(['--val_load', test_path])
-
+    if config.pre_trained is not None:
+        args.extend(['--pre_trained', str(1)])
     trainer_config = trainer_parser.parse_known_args(
          [model] + sys.argv[1:] + args
     )[0]
-    print(trainer_config.test_path)
     trainer_script.main(model, trainer_config)
 
 
