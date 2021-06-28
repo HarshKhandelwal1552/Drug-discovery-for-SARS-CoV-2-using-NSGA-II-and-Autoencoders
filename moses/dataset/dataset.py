@@ -6,7 +6,7 @@ import pandas as pd
 AVAILABLE_SPLITS = ['train', 'test', 'test_scaffolds']
 
 
-def get_dataset(split='train', gen):
+def get_dataset(gen, split='train'):
     """
     Loads MOSES dataset
 

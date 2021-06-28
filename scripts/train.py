@@ -39,7 +39,7 @@ def main(model, config):
     if device.type.startswith('cuda'):
         torch.cuda.set_device(device.index or 0)
     if config.train_load is None:
-        train_data = get_dataset('train', config.gen_i)
+        train_data = get_dataset(config.gen_i, 'train')
     else:
         train_data = read_smiles_csv(config.train_load)
     if config.val_load is None:
