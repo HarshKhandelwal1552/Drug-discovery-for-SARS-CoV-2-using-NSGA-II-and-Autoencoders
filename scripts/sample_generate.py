@@ -151,7 +151,7 @@ def get_generation_path(config, model):
 # =============================================================================
 #     return parser
 # =============================================================================
-def train_model(config)
+def train_model(config):
     models = (MODELS.get_model_names()
               if config.model == 'all'
               else [config.model])
