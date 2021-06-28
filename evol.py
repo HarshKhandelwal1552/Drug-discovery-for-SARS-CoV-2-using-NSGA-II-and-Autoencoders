@@ -16,6 +16,7 @@ class Evolution:
 
     def evolve(self, fathers):
         self.population = self.utils.create_initial_population(fathers)
+        print('Initializing Training.....')
         main()
         print('Initial_Perito....')
         self.utils.fast_nondominated_sort(self.population)
@@ -78,4 +79,5 @@ class Evolution:
             samples = pd.DataFrame(smiles, columns=['SMILES'])
             base_path= 'moses/dataset/data/gen_'
             samples.to_csv(base_path+str(i+1)+ '.csv', index=False)
+            print('Improving Trained Model.....')
             mml(i+1)
