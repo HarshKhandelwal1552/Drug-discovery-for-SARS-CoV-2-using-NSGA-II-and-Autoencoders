@@ -41,6 +41,7 @@ class config():
         self.train_size= None
         self.test_size= None
         self.experiment_suff= ''
+        self.pre_trained= True
 
  
 print(config().device)
@@ -173,7 +174,8 @@ def train_model(config, model, train_path, test_path):
         '--config_save', config_path,
         '--vocab_save', vocab_path,
         '--log_file', log_path,
-        '--n_jobs', str(config.n_jobs)
+        '--n_jobs', str(config.n_jobs),
+        '--pre_trained', config.pre_trained,
     ]
     if train_path is not None:
         args.extend(['--train_load', train_path])
