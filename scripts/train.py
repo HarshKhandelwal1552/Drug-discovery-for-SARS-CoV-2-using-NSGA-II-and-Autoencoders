@@ -43,7 +43,7 @@ def main(model, config):
     else:
         train_data = read_smiles_csv(config.train_load)
     if config.val_load is None:
-        val_data = get_dataset('test')
+        val_data = get_dataset(-1, 'test')
     else:
         val_data = read_smiles_csv(config.val_load)
     trainer = MODELS.get_model_trainer(model)(config)
