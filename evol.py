@@ -76,6 +76,6 @@ class Evolution:
             #[print(x.features) for x in self.population.fronts[0]]
             smiles= [x.features for x in self.population]
             samples = pd.DataFrame(smiles, columns=['SMILES'])
-            mml(i+1)
             base_path= 'moses/dataset/data/gen_'
             samples.to_csv(base_path+str(i+1)+ '.csv', index=False)
+            mml(i+1)
