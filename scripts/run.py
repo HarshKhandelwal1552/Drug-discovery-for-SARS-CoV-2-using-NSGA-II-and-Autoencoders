@@ -175,7 +175,7 @@ def train_model(config, model, train_path, test_path):
         '--vocab_save', vocab_path,
         '--log_file', log_path,
         '--n_jobs', str(config.n_jobs),
-        '--pre_trained', str(config.pre_trained),
+        '--pre_trained', str(config.pre_trained)
     ]
     if train_path is not None:
         args.extend(['--train_load', train_path])
