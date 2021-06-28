@@ -156,7 +156,7 @@ def get_generation_path(config, model):
 # =============================================================================
 
 
-def train_model(config, model, train_path, test_path, gen):
+def train_model(config, model, train_path, test_path):
     print('Training...')
     model_path = get_model_path(config, model)
     config_path = get_config_path(config, model)
