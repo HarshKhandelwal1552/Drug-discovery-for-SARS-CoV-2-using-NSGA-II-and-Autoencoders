@@ -58,9 +58,10 @@ def main(model, config):
     if config.vocab_save is not None:
         torch.save(vocab, config.vocab_save)
 
+    model = MODELS.get_model_class(model)(vocab, config).to(device)
     if config.pre_trained==1:
-        model= torch.load(config.model_save).to(device)
-    else: model = MODELS.get_model_class(model)(vocab, config).to(device)
+
+        model.load_state_dict(torch.load(config.model_save))
 
     trainer.fit(model, train_data, val_data)
 
