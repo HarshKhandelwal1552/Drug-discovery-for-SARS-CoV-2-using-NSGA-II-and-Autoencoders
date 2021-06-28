@@ -6,7 +6,7 @@ import pandas as pd
 import time
 class Evolution:
 
-    def __init__(self, problem, num_of_generations=1, num_of_individuals=1000, num_of_tour_particips=1, tournament_prob=0.9, crossover_param=2, mutation_param=5):
+    def __init__(self, problem, num_of_generations=4, num_of_individuals=1000, num_of_tour_particips=1, tournament_prob=0.9, crossover_param=2, mutation_param=5):
         self.utils = NSGA2Utils(problem, num_of_tour_particips, tournament_prob, crossover_param, mutation_param)
         self.population = None
         self.num_of_generations = num_of_generations
