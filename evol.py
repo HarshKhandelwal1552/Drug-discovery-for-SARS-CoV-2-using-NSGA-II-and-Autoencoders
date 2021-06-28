@@ -6,7 +6,7 @@ import pandas as pd
 import time
 class Evolution:
 
-    def __init__(self, problem, num_of_generations=4, num_of_individuals=1000, num_of_tour_particips=1, tournament_prob=0.9, crossover_param=2, mutation_param=5):
+    def __init__(self, problem, num_of_generations=4, num_of_individuals=10000, num_of_tour_particips=1, tournament_prob=0.9, crossover_param=2, mutation_param=5):
         self.utils = NSGA2Utils(problem, num_of_tour_particips, tournament_prob, crossover_param, mutation_param)
         self.population = None
         self.num_of_generations = num_of_generations
@@ -78,4 +78,4 @@ class Evolution:
             samples = pd.DataFrame(smiles, columns=['SMILES'])
             mml(i+1)
             base_path= 'moses/dataset/data/gen_'
-            samples.to_csv(base_path+str(i)+ '.csv', index=False)
+            samples.to_csv(base_path+str(i+1)+ '.csv', index=False)
