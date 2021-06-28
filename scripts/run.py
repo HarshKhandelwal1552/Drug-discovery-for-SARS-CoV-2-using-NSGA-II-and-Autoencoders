@@ -249,22 +249,22 @@ def eval_metrics(config, model, test_path, test_scaffolds_path,
 def main():
     cfg= config()
     print(cfg.model)
-    if not os.path.exists(config.checkpoint_dir):
-        os.mkdir(config.checkpoint_dir)
+    if not os.path.exists(cfg.checkpoint_dir):
+        os.mkdir(cfg.checkpoint_dir)
 
-    train_path = config.train_path
-    test_path = config.test_path
-    test_scaffolds_path = config.test_scaffolds_path
-    ptest_path = config.ptest_path
-    ptest_scaffolds_path = config.ptest_scaffolds_path
+    train_path = cfg.train_path
+    test_path = cfg.test_path
+    test_scaffolds_path = cfg.test_scaffolds_path
+    ptest_path = cfg.ptest_path
+    ptest_scaffolds_path = cfg.ptest_scaffolds_path
 
     models = (MODELS.get_model_names()
-              if config.model == 'all'
-              else [config.model])
+              if cfg.model == 'all'
+              else [cfg.model])
     for model in models:
-        train_model(config, model, train_path, test_path)
-        if config.n_samples:
-            sample_from_model(config, model)
+        train_model(cfg, model, train_path, test_path)
+        if cfg.n_samples:
+            sample_from_model(cfg, model)
 
     for model in models:
         model_metrics = eval_metrics(config, model,
@@ -274,9 +274,9 @@ def main():
         table = pd.DataFrame([model_metrics]).T
         if len(models) == 1:
             metrics_path = ''.join(
-                os.path.splitext(config.metrics)[:-1])+f'_{model}.csv'
+                os.path.splitext(cfg.metrics)[:-1])+f'_{model}.csv'
         else:
-            metrics_path = config.metrics
+            metrics_path = cfg.metrics
         table.to_csv(metrics_path, header=False)
 
 
@@ -285,8 +285,8 @@ def main():
 # #     parser = get_parser()
 # # =============================================================================
 # # =============================================================================
-# #     config = parser.parse_known_args()[0]
+# #     cfg = parser.parse_known_args()[0]
 # # =============================================================================
-#     cfg= config()
+#     cfg= cfg()
 #     print(cfg.model)
 #     main(cfg)
