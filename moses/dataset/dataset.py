@@ -27,7 +27,7 @@ def get_dataset(gen, split='train'):
         raise ValueError(
             f"Unknown split {split}. "
             f"Available splits: {AVAILABLE_SPLITS}")
-    path= os.path.dirname(__file__, 'data/gen_' + str(gen)+'.csv')
+    path= os.path.dirname(__file__, 'data', 'gen_' + str(gen)+'.csv')
     smiles= pd.read_csv(path)['SMILES'].values
     return smiles
 
