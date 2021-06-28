@@ -41,7 +41,7 @@ class config():
         self.train_size= None
         self.test_size= None
         self.experiment_suff= ''
-        self.pre_trained= True
+        self.pre_trained= 1
 
  
 print(config().device)
