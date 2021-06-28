@@ -6,7 +6,7 @@ import pandas as pd
 AVAILABLE_SPLITS = ['train', 'test', 'test_scaffolds']
 
 
-def get_dataset(split='train'):
+def get_dataset(split='train', gen):
     """
     Loads MOSES dataset
 
@@ -27,8 +27,8 @@ def get_dataset(split='train'):
         raise ValueError(
             f"Unknown split {split}. "
             f"Available splits: {AVAILABLE_SPLITS}")
-    path = os.path.join(base_path, 'data', split+'.csv.gz')
-    smiles = pd.read_csv(path, compression='gzip')['SMILES'].values
+    path= os.path.dirname(__file__, 'data/gen_' + str(gen)+'.csv')
+    smiles= pd.read_csv(path)['SMILES'].values
     return smiles
 
 

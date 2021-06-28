@@ -42,6 +42,7 @@ class config():
         self.test_size= None
         self.experiment_suff= ''
         self.pre_trained= 1
+        self.gen_i= 0
 
  
 print(config().device)
