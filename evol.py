@@ -1,6 +1,7 @@
 
 from nsga2 import NSGA2Utils
 from scripts.sample_generate import mml
+from scripts.run import main
 from pop import Population
 import pandas as pd
 import time
@@ -15,7 +16,7 @@ class Evolution:
 
     def evolve(self, fathers):
         self.population = self.utils.create_initial_population(fathers)
-        
+        main()
         print('Initial_Perito....')
         self.utils.fast_nondominated_sort(self.population)
         
@@ -48,7 +49,6 @@ class Evolution:
             self.utils.fast_nondominated_sort(self.population)
             new_population = Population()
             front_num = 0
-            
             print('Crowding_Sort....')
 
             while len(new_population) + len(self.population.fronts[front_num]) <= self.num_of_individuals:
