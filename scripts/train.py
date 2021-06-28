@@ -59,7 +59,7 @@ def main(model, config):
         torch.save(vocab, config.vocab_save)
 
     if config.pre_trained==1:
-        model= torch.load( config.model_save).to(device)
+        model= torch.load(model.state_dict(), config.model_save).to(device)
     else: model = MODELS.get_model_class(model)(vocab, config).to(device)
 
     trainer.fit(model, train_data, val_data)
