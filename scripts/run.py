@@ -45,8 +45,6 @@ class config():
         self.gen_i= 0
 
  
-print(config().device)
-
 
 # =============================================================================
 # print(config.checkpoint_dir)
@@ -249,6 +247,7 @@ def eval_metrics(config, model, test_path, test_scaffolds_path,
 def main():
     cfg= config()
     print(cfg.model)
+    print(cfg.device)
     if not os.path.exists(cfg.checkpoint_dir):
         os.mkdir(cfg.checkpoint_dir)
 
