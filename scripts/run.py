@@ -156,7 +156,7 @@ def get_generation_path(config, model):
 # =============================================================================
 
 
-def train_model(config, model, train_path, test_path):
+def train_model(config, model, train_path, test_path, gen):
     print('Training...')
     model_path = get_model_path(config, model)
     config_path = get_config_path(config, model)
@@ -187,6 +187,7 @@ def train_model(config, model, train_path, test_path):
          [model] + sys.argv[1:] + args
     )[0]
     trainer_config.pre_trained= True
+    trainer_config.gen_i= config.gen_i
     trainer_script.main(model, trainer_config)
 
 
