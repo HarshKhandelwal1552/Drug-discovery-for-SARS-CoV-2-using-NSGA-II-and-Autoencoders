@@ -13,6 +13,6 @@ I was able to implement the above methodology on small scale due to hardware and
 We tried to improve the generation of new drugs in the paper NSGA-II for SARS-CoV-2 [1]. Instead of replacing, deleting, inseting new symbols we used Adversarial Autoencoders which will create valid coumpounds more often and we could have a track on weather our generated drugs are getting better or not. This approach is not just restricted to Covid cure, we can extend this approach further as discussed above.
 
 ## References: 
-[1] NSGA-II for SARS-CoV-2.
-[2] NSGA-II.
-[3] All smiles Variational Autoencoder.
+[1] ![NSGA-II for SARS-CoV-2](https://arxiv.org/abs/2005.02666)
+[2] ![NSGA-II](https://www.iitk.ac.in/kangal/Deb_NSGA-II.pdf)
+[3] ![All smiles Variational Autoencoder](https://arxiv.org/pdf/1905.13343v2.pdf)
