@@ -23,3 +23,4 @@ We tried to improve the generation of new drugs in the paper NSGA-II for SARS-Co
 - [AutoDock](http://autodock.scripps.edu/faqs-help/how-to/how-to-prepare-a-ligand-file-for-autodock4)
 - [PyRx for Docking](https://pyrx.sourceforge.io)
 - [Open Babel](http://openbabel.org/wiki/Main_Page)
+- [MOSES](https://arxiv.org/pdf/1811.12823.pdf)
